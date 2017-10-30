@@ -10,12 +10,23 @@ namespace AutmationIdTest
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<String> ItemsSource { get; set; } = new ObservableCollection<string> { "1", "2", "3" };
+        public ObservableCollection<String> ItemsSource { get; set; } = new ObservableCollection<string> { };
 
         public MainPage()
         {
             InitializeComponent();
             this.BindingContext = this;
+            this.AddButton.Clicked += OnAddButtonClicked;
+            this.RemoveButton.Clicked += OnRemoveButtonClicked;
+        }
+
+        void OnAddButtonClicked(object sender, EventArgs e) {
+            ItemsSource.Add("");
+        }
+
+        void OnRemoveButtonClicked(object sender, EventArgs e)
+        {
+            ItemsSource.Remove("");
         }
     }
 }
